@@ -109,7 +109,7 @@ function ModelChartsFallback() {
 
 function PerformanceOverviewFallback() {
   return (
-    <div className='space-y-3 sm:space-y-4'>
+    <div className='flex flex-col gap-3 sm:gap-4'>
       <div className='overflow-hidden rounded-lg border'>
         <div className='divide-border/60 grid grid-cols-2 divide-x sm:grid-cols-4'>
           {Array.from({ length: 4 }).map((_, i) => (
@@ -233,7 +233,7 @@ export function Dashboard() {
         {t(meta.descriptionKey)}
       </SectionPageLayout.Description>
       <SectionPageLayout.Content>
-        <div className='space-y-3 sm:space-y-4'>
+        <div className='flex flex-col gap-3 sm:gap-4'>
           {activeSection !== 'overview' && (
             <div className='flex flex-wrap items-center justify-between gap-1.5 sm:gap-2'>
               {showSectionTabs ? (

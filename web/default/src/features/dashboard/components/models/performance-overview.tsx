@@ -96,15 +96,15 @@ function buildPerformanceSummary(rows: PerfModelSummary[]): PerformanceSummary {
 }
 
 function successRateClassName(successRate: number): string {
-  if (successRate >= 99.9) return 'text-emerald-600 dark:text-emerald-400'
-  if (successRate >= 99) return 'text-amber-600 dark:text-amber-400'
-  return 'text-rose-600 dark:text-rose-400'
+  if (successRate >= 99.9) return 'text-foreground'
+  if (successRate >= 99) return 'text-foreground/70'
+  return 'text-muted-foreground'
 }
 
 function successDotClassName(successRate: number): string {
-  if (successRate >= 99.9) return 'bg-emerald-500'
-  if (successRate >= 99) return 'bg-amber-500'
-  return 'bg-rose-500'
+  if (successRate >= 99.9) return 'bg-foreground'
+  if (successRate >= 99) return 'bg-muted-foreground'
+  return 'bg-border'
 }
 
 function PerformanceMetricItem(props: {
@@ -129,7 +129,7 @@ function PerformanceMetricItem(props: {
         </div>
       </div>
       {props.loading ? (
-        <div className='mt-2 space-y-1.5'>
+        <div className='mt-2 flex flex-col gap-1.5'>
           <Skeleton className='h-7 w-20' />
           <Skeleton className='h-3.5 w-28' />
         </div>
@@ -191,7 +191,7 @@ export function PerformanceOverview() {
   const description = t('Performance metrics for the last 24 hours')
 
   return (
-    <section className='space-y-3 sm:space-y-4'>
+    <section className='flex flex-col gap-3 sm:gap-4'>
       <div className='overflow-hidden rounded-lg border'>
         <div className='divide-border/60 grid grid-cols-2 divide-x sm:grid-cols-4'>
           <PerformanceMetricItem

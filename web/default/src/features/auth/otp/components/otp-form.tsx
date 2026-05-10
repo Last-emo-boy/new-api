@@ -206,7 +206,9 @@ export function OtpForm({ className, ...props }: OtpFormProps) {
           className='mt-2 w-full'
           disabled={!isFormValid || isLoading}
         >
-          {isLoading ? <Loader2 className='h-4 w-4 animate-spin' /> : null}
+          {isLoading ? (
+            <Loader2 data-icon='inline-start' className='animate-spin' />
+          ) : null}
           {t('Verify and Sign In')}
         </Button>
 

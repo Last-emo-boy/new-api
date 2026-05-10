@@ -128,7 +128,7 @@ export function LogStatCards(props: LogStatCardsProps) {
               </div>
 
               {loading ? (
-                <div className='mt-2 space-y-1.5'>
+                <div className='mt-2 flex flex-col gap-1.5'>
                   <Skeleton className='h-7 w-20' />
                   <Skeleton className='h-3.5 w-28' />
                 </div>

@@ -327,7 +327,11 @@ export function UserAuthForm({
           className='mt-2 w-full justify-center gap-2'
           disabled={isLoading || (requiresLegalConsent && !agreedToLegal)}
         >
-          {isLoading ? <Loader2 className='animate-spin' /> : <LogIn />}
+          {isLoading ? (
+            <Loader2 data-icon='inline-start' className='animate-spin' />
+          ) : (
+            <LogIn data-icon='inline-start' />
+          )}
           {t('Sign in')}
         </Button>
 
@@ -349,18 +353,18 @@ export function UserAuthForm({
         />
 
         {passkeyLoginEnabled && (
-          <div className='mt-2 space-y-1'>
+          <div className='mt-2 flex flex-col gap-1'>
             <Button
               type='button'
               variant='outline'
               disabled={passkeyButtonDisabled}
               onClick={handlePasskeyLogin}
-              className='h-11 w-full justify-center gap-2 rounded-lg'
+              className='h-11 w-full justify-center gap-2 rounded-md'
             >
               {isPasskeyLoading ? (
-                <Loader2 className='h-4 w-4 animate-spin' />
+                <Loader2 data-icon='inline-start' className='animate-spin' />
               ) : (
-                <KeyRound className='h-4 w-4' />
+                <KeyRound data-icon='inline-start' />
               )}
               {t('Sign in with Passkey')}
             </Button>
@@ -441,7 +445,7 @@ export function UserAuthForm({
                 className='gap-2'
               >
                 {isWeChatSubmitting ? (
-                  <Loader2 className='h-4 w-4 animate-spin' />
+                  <Loader2 className='animate-spin' />
                 ) : null}
                 {t('Confirm')}
               </Button>

@@ -109,7 +109,11 @@ export function ForgotPasswordForm({
 
         <Button className='mt-2' disabled={isLoading || isActive}>
           {isActive ? `Resend (${secondsLeft}s)` : 'Send reset email'}
-          {isLoading ? <Loader2 className='animate-spin' /> : <ArrowRight />}
+          {isLoading ? (
+            <Loader2 data-icon='inline-end' className='animate-spin' />
+          ) : (
+            <ArrowRight data-icon='inline-end' />
+          )}
         </Button>
 
         {isTurnstileEnabled && (

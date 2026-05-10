@@ -311,7 +311,7 @@ export function SignUpForm({
                 {isActive ? (
                   t('Resend ({{seconds}}s)', { seconds: secondsLeft })
                 ) : isSendingCode ? (
-                  <Loader2 className='h-4 w-4 animate-spin' />
+                  <Loader2 className='animate-spin' />
                 ) : (
                   t('Send code')
                 )}
@@ -343,7 +343,9 @@ export function SignUpForm({
           className='mt-2 w-full justify-center gap-2'
           disabled={isLoading || (requiresLegalConsent && !agreedToLegal)}
         >
-          {isLoading ? <Loader2 className='h-4 w-4 animate-spin' /> : null}
+          {isLoading ? (
+            <Loader2 data-icon='inline-start' className='animate-spin' />
+          ) : null}
           {t('Create account')}
         </Button>
 
@@ -418,7 +420,7 @@ export function SignUpForm({
                 className='gap-2'
               >
                 {isWeChatSubmitting ? (
-                  <Loader2 className='h-4 w-4 animate-spin' />
+                  <Loader2 data-icon='inline-start' className='animate-spin' />
                 ) : null}
                 {t('Confirm')}
               </Button>

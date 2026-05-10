@@ -45,6 +45,19 @@ For commercial licensing, please contact support@quantumnous.com
   }
   body {
     @apply bg-background text-foreground has-[div[data-variant='inset']]:bg-sidebar min-h-svh w-full font-sans;
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklch, var(--border) 34%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklch, var(--border) 30%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+    background-position: center top;
   }
 
   /* Keep sticky headers stable while primitives lock body scrolling. */
@@ -453,22 +466,24 @@ For commercial licensing, please contact support@quantumnous.com
   }
 }
 
-/* Micro-interactions — Vercel-style subtle hover/active feedback */
+/* Micro-interactions — restrained monochrome feedback */
 @media (prefers-reduced-motion: no-preference) {
   [data-slot='card'] {
     transition:
       transform 150ms ease,
+      border-color 150ms ease,
       box-shadow 150ms ease;
   }
 
   @media (min-width: 641px) {
     [data-slot='card']:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.06);
+      border-color: color-mix(in oklch, var(--foreground) 18%, var(--border));
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.06);
     }
 
     .dark [data-slot='card']:hover {
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+      box-shadow: 0 10px 28px rgb(0 0 0 / 0.32);
     }
   }
 

@@ -173,7 +173,7 @@ export function SummaryCards() {
   })
 
   return (
-    <div className='bg-card overflow-hidden rounded-2xl border shadow-xs'>
+    <div className='bg-card/95 overflow-hidden rounded-lg border shadow-xs'>
       <div className='grid xl:grid-cols-[minmax(0,1fr)_19rem]'>
         <div className='flex flex-col gap-3 p-4 sm:p-5'>
           <div className='flex flex-wrap items-start justify-between gap-3'>
@@ -190,7 +190,7 @@ export function SummaryCards() {
             {items.map((it) => (
               <StaggerItem
                 key={it.title}
-                className='bg-background/60 rounded-xl border p-3'
+                className='bg-background/70 rounded-md border p-3'
               >
                 <StatCard
                   title={it.title}
@@ -206,7 +206,7 @@ export function SummaryCards() {
           </StaggerContainer>
         </div>
 
-        <div className='bg-warning/10 flex flex-col justify-between gap-5 border-t p-4 sm:p-5 xl:border-t-0 xl:border-l'>
+        <div className='bg-muted/35 flex flex-col justify-between gap-5 border-t p-4 sm:p-5 xl:border-t-0 xl:border-l'>
           <div className='flex flex-col gap-2'>
             <div className='text-muted-foreground text-sm'>
               {t('Credit remaining')}

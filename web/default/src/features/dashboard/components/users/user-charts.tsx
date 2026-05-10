@@ -22,6 +22,7 @@ import { VChart } from '@visactor/react-vchart'
 import { Users, Loader2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { getRollingDateRange, type TimeGranularity } from '@/lib/time'
+import { cn } from '@/lib/utils'
 import { VCHART_OPTION } from '@/lib/vchart'
 import { useThemeCustomization } from '@/context/theme-customization-provider'
 import { useTheme } from '@/context/theme-provider'
@@ -147,12 +148,11 @@ export function UserCharts() {
       t,
       topUserLimit,
       customization.preset,
-      customization.radius,
     ]
   )
 
   return (
-    <div className='space-y-3'>
+    <div className='flex flex-col gap-3'>
       <div className='flex items-center gap-1.5 overflow-x-auto pb-1 sm:gap-2'>
         <div className='flex shrink-0 items-center gap-1.5 rounded-lg border p-0.5'>
           {TIME_RANGE_PRESETS.map((preset) => (
@@ -160,11 +160,12 @@ export function UserCharts() {
               key={preset.days}
               type='button'
               onClick={() => handleRangeChange(preset.days)}
-              className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+              className={cn(
+                'rounded-md px-2.5 py-1 text-xs font-medium transition-colors',
                 selectedRange === preset.days
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-              }`}
+              )}
             >
               {t(preset.label)}
             </button>
@@ -179,11 +180,12 @@ export function UserCharts() {
               onClick={() =>
                 handleGranularityChange(opt.value as TimeGranularity)
               }
-              className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+              className={cn(
+                'rounded-md px-2.5 py-1 text-xs font-medium transition-colors',
                 timeGranularity === opt.value
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-              }`}
+              )}
             >
               {t(opt.label)}
             </button>
@@ -199,11 +201,12 @@ export function UserCharts() {
               key={limit}
               type='button'
               onClick={() => setTopUserLimit(limit)}
-              className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+              className={cn(
+                'rounded-md px-2.5 py-1 text-xs font-medium transition-colors',
                 topUserLimit === limit
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-              }`}
+              )}
             >
               {t('Top {{count}}', { count: limit })}
             </button>

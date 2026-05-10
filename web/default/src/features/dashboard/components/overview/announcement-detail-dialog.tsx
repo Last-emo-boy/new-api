@@ -59,7 +59,7 @@ export function AnnouncementDetailModal({
           )}
         </DialogHeader>
         <ScrollArea className='max-h-[60vh] pr-4'>
-          <div className='space-y-4'>
+          <div className='flex flex-col gap-4'>
             {announcement?.content && (
               <div>
                 <h4 className='mb-2 font-medium'>{t('Content')}</h4>

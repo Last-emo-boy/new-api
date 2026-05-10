@@ -34,37 +34,26 @@ export function Hero(props: HeroProps) {
 
   return (
     <section className='relative z-10 flex flex-col items-center overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24'>
-      {/* Radial gradient background */}
       <div
         aria-hidden
-        className='pointer-events-none absolute inset-0 -z-10 opacity-25 dark:opacity-[0.12]'
-        style={{
-          background: [
-            'radial-gradient(ellipse 60% 50% at 20% 20%, oklch(0.72 0.18 250 / 80%) 0%, transparent 70%)',
-            'radial-gradient(ellipse 50% 40% at 80% 15%, oklch(0.65 0.15 200 / 60%) 0%, transparent 70%)',
-            'radial-gradient(ellipse 40% 35% at 40% 80%, oklch(0.70 0.12 280 / 40%) 0%, transparent 70%)',
-          ].join(', '),
-        }}
+        className='absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,black_0%,transparent_78%)] bg-[size:3rem_3rem] opacity-35'
       />
-      {/* Grid pattern */}
       <div
         aria-hidden
-        className='absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black_20%,transparent_100%)] bg-[size:4rem_4rem] opacity-[0.08]'
+        className='bg-border absolute top-24 left-1/2 -z-10 h-px w-[min(40rem,80vw)] -translate-x-1/2'
       />
 
       <div className='flex max-w-3xl flex-col items-center text-center'>
         <h1
-          className='landing-animate-fade-up text-[clamp(2rem,5.5vw,3.5rem)] leading-[1.15] font-bold tracking-tight'
+          className='landing-animate-fade-up text-[clamp(2rem,5.5vw,3.5rem)] leading-[1.08] font-semibold tracking-tight'
           style={{ animationDelay: '0ms' }}
         >
           {t('Unified API Gateway for')}
           <br />
-          <span className='bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent'>
-            {t('All Your AI Models')}
-          </span>
+          <span className='text-foreground/70'>{t('All Your AI Models')}</span>
         </h1>
         <p
-          className='landing-animate-fade-up text-muted-foreground/80 mt-5 max-w-lg text-base leading-relaxed opacity-0 md:text-lg'
+          className='landing-animate-fade-up text-muted-foreground mt-5 max-w-xl text-base leading-relaxed opacity-0 md:text-lg'
           style={{ animationDelay: '80ms' }}
         >
           {systemName}{' '}
@@ -78,24 +67,30 @@ export function Hero(props: HeroProps) {
         >
           {props.isAuthenticated ? (
             <Button
-              className='group rounded-lg'
+              className='group rounded-md'
               render={<Link to='/dashboard' />}
             >
               {t('Go to Dashboard')}
-              <ArrowRight className='ml-1 size-3.5 transition-transform duration-200 group-hover:translate-x-0.5' />
+              <ArrowRight
+                data-icon='inline-end'
+                className='transition-transform duration-200 group-hover:translate-x-0.5'
+              />
             </Button>
           ) : (
             <>
               <Button
-                className='group rounded-lg'
+                className='group rounded-md'
                 render={<Link to='/sign-up' />}
               >
                 {t('Get Started')}
-                <ArrowRight className='ml-1 size-3.5 transition-transform duration-200 group-hover:translate-x-0.5' />
+                <ArrowRight
+                  data-icon='inline-end'
+                  className='transition-transform duration-200 group-hover:translate-x-0.5'
+                />
               </Button>
               <Button
                 variant='outline'
-                className='border-border/50 hover:border-border hover:bg-muted/50 rounded-lg'
+                className='rounded-md'
                 render={<Link to='/pricing' />}
               >
                 {t('View Pricing')}

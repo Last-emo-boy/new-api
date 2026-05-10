@@ -93,13 +93,13 @@ export function SecureVerificationDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className='top-[8vh] max-w-[calc(100%-1.5rem)] translate-y-0 gap-0 overflow-hidden border-none p-0 shadow-xl sm:top-1/2 sm:max-w-md sm:translate-y-[-50%] sm:rounded-xl'
+        className='top-[8vh] max-w-[calc(100%-1.5rem)] translate-y-0 gap-0 overflow-hidden border-none p-0 shadow-xl sm:top-1/2 sm:max-w-md sm:translate-y-[-50%] sm:rounded-lg'
         showCloseButton={!state.loading}
       >
         <div className='bg-background flex max-h-[calc(100dvh-2rem)] flex-col'>
           <DialogHeader className='border-b px-6 py-5 text-left'>
             <DialogTitle className='flex items-center gap-2 text-lg font-semibold'>
-              <ShieldCheck className='text-primary h-5 w-5' />
+              <ShieldCheck className='text-primary size-5' />
               {title}
             </DialogTitle>
             <DialogDescription className='text-left'>
@@ -110,8 +110,8 @@ export function SecureVerificationDialog({
           <div className='flex-1 overflow-y-auto px-6 py-5'>
             {availableTabs.length === 0 ? (
               <div className='grid place-items-center gap-4 text-center'>
-                <div className='bg-muted flex h-16 w-16 items-center justify-center rounded-2xl'>
-                  <ShieldCheck className='text-muted-foreground h-8 w-8' />
+                <div className='bg-muted flex size-16 items-center justify-center rounded-lg border'>
+                  <ShieldCheck className='text-muted-foreground size-8' />
                 </div>
                 <p className='text-muted-foreground text-sm'>
                   {t(
@@ -138,7 +138,7 @@ export function SecureVerificationDialog({
                   )}
                 </TabsList>
 
-                <TabsContent value='2fa' className='space-y-3'>
+                <TabsContent value='2fa' className='flex flex-col gap-3'>
                   <p className='text-muted-foreground text-sm'>
                     {t(
                       'Enter the 6-digit Time-based One-Time Password or 8-character backup code from your authenticator app.'
@@ -161,10 +161,10 @@ export function SecureVerificationDialog({
                   />
                 </TabsContent>
 
-                <TabsContent value='passkey' className='space-y-4'>
+                <TabsContent value='passkey' className='flex flex-col gap-4'>
                   <div className='bg-muted/50 flex items-center justify-center rounded-lg p-4'>
                     <div className='text-muted-foreground flex items-center gap-3'>
-                      <KeyRound className='text-primary h-6 w-6' />
+                      <KeyRound className='text-primary size-6' />
                       <div className='text-left text-sm'>
                         <p className='text-foreground font-medium'>
                           {t('Use your Passkey')}
@@ -201,7 +201,9 @@ export function SecureVerificationDialog({
               onClick={handleVerify}
               disabled={availableTabs.length === 0 || verifyDisabled}
             >
-              {state.loading && <Loader2 className='h-4 w-4 animate-spin' />}
+              {state.loading && (
+                <Loader2 data-icon='inline-start' className='animate-spin' />
+              )}
               {t('Verify')}
             </Button>
           </DialogFooter>

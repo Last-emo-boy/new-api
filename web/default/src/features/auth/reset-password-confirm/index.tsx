@@ -105,8 +105,8 @@ export function ResetPasswordConfirm({
 
   return (
     <AuthLayout>
-      <div className='w-full space-y-8'>
-        <div className='space-y-2'>
+      <div className='flex w-full flex-col gap-8'>
+        <div className='flex flex-col gap-2'>
           <h2 className='text-center text-2xl font-semibold tracking-tight sm:text-left'>
             {t('Reset password')}
           </h2>
@@ -117,7 +117,7 @@ export function ResetPasswordConfirm({
           </p>
         </div>
 
-        <div className='space-y-4'>
+        <div className='flex flex-col gap-4'>
           {!isValidResetLink && (
             <Alert variant='destructive'>
               <AlertDescription>
@@ -126,7 +126,7 @@ export function ResetPasswordConfirm({
             </Alert>
           )}
 
-          <div className='space-y-2'>
+          <div className='flex flex-col gap-2'>
             <Label htmlFor='email'>{t('Email')}</Label>
             <Input
               id='email'
@@ -138,7 +138,7 @@ export function ResetPasswordConfirm({
           </div>
 
           {newPassword && (
-            <div className='space-y-2'>
+            <div className='flex flex-col gap-2'>
               <Label htmlFor='password'>{t('New password')}</Label>
               <div className='flex gap-2'>
                 <Input
@@ -153,11 +153,7 @@ export function ResetPasswordConfirm({
                   variant='outline'
                   onClick={handleCopy}
                 >
-                  {copied ? (
-                    <CheckIcon className='h-4 w-4' />
-                  ) : (
-                    <CopyIcon className='h-4 w-4' />
-                  )}
+                  {copied ? <CheckIcon /> : <CopyIcon />}
                 </Button>
               </div>
               <p className='text-muted-foreground text-xs'>
